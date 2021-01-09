@@ -30,4 +30,3 @@ INSERT INTO use(name, email, am)VALUES('alex','alw5@uowm.gr',2278);
 
 
 ![GitHub Logo](sample.jpg)
-Format: ![Alt Text](url)

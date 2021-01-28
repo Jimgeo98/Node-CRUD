@@ -4,7 +4,9 @@ const ejs = require("ejs");
 const app = express();
 const mysql = require("mysql");
 
-const db = mysql.createConnection({
+
+const db = mysql.createPool({
+  connectionLimit : 100,
   host: "localhost",
   user: "admin2",
   password: "1qa2ws",
@@ -12,14 +14,26 @@ const db = mysql.createConnection({
   port: 3307,
 });
 
-// Connect
-db.connect((err) => {
+
+// Check the possible errors 
+db.getConnection((err, connection) => {
+
   if (err) {
-    console.log(err);
-  } else {
-    console.log("MySQL Connected successfully..");
+      if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+          console.error('Database connection was closed.')
+      }
+      if (err.code === 'ER_CON_COUNT_ERROR') {
+          console.error('Database has too many connections.')
+      }
+      if (err.code === 'ECONNREFUSED') {
+          console.error('Database connection was refused.')
+      }
   }
-});
+  else if (connection){
+    console.log("MySQL Database connected successfully")
+  }
+})
+
 
 //set views file
 app.set("views", path.join(__dirname, "views"));

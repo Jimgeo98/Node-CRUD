@@ -27,6 +27,3 @@ INSERT INTO use(name, email, am)VALUES('alex','alw5@uowm.gr',2278);
 
 
 ### go to http://localhost:3000/
-
-
-![GitHub Logo](pic.jpg)

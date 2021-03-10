@@ -1,23 +1,7 @@
-## To run it :
+## Its a CRUD web application using Node.js / ejs and HTML/CSS
 
 
-### in MySQL Workbench
-
-```SQL
-CREATE TABLE users (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL,
-    email VARCHAR(30) NOT NULL,
-    am INT NOT NULL,
-    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-INSERT INTO users(name, email, am)VALUES('anna','an2@uowm.gr',5849);
-
-INSERT INTO users(name, email, am)VALUES('kostas','kos7@uowm.gr',7695);
-
-INSERT INTO use(name, email, am)VALUES('alex','alw5@uowm.gr',2278);
-```
-
+### To run it :
 ### in terminal
 
 ```npm install```

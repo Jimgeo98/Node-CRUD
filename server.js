@@ -1,39 +1,42 @@
 const path = require("path");
-const express = require("express");
-const ejs = require("ejs");
-const app = express();
 const mysql = require("mysql");
+const express = require("express");
+require("dotenv").config();
 
 
+
+// Database config
 const db = mysql.createPool({
-  connectionLimit : 100,
-  host: "localhost",
-  user: "admin2",
-  password: "1qa2ws",
-  database: "uowm",
-  port: 3307,
+  connectionLimit: 100,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
 });
 
 
-// Check the possible errors 
+
+// Check the possible errors
 db.getConnection((err, connection) => {
-
   if (err) {
-      if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-          console.error('Database connection was closed.')
-      }
-      if (err.code === 'ER_CON_COUNT_ERROR') {
-          console.error('Database has too many connections.')
-      }
-      if (err.code === 'ECONNREFUSED') {
-          console.error('Database connection was refused.')
-      }
+    if (err.code === "PROTOCOL_CONNECTION_LOST") {
+      console.error("Database connection was closed.");
+    }
+    if (err.code === "ER_CON_COUNT_ERROR") {
+      console.error("Database has too many connections.");
+    }
+    if (err.code === "ECONNREFUSED") {
+      console.error("Database connection was refused.");
+    }
+  } else if (connection) {
+    console.log("MySQL Database connected successfully");
   }
-  else if (connection){
-    console.log("MySQL Database connected successfully")
-  }
-})
+});
 
+
+
+const app = express();
 
 //set views file
 app.set("views", path.join(__dirname, "views"));
@@ -44,6 +47,8 @@ app.set("view engine", "ejs");
 //Parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
 
 // Display all Data
 app.get("/", (req, res) => {
@@ -57,12 +62,16 @@ app.get("/", (req, res) => {
   });
 });
 
+
+
 //Add Request
 app.get("/add", (req, res) => {
   res.render("user_add", {
     title: "Add New User",
   });
 });
+
+
 
 //Save the add item
 app.post("/save", (req, res) => {
@@ -79,6 +88,9 @@ app.post("/save", (req, res) => {
   });
 });
 
+
+
+//Get specific user with unique id
 app.get("/edit/:userId", (req, res) => {
   const userId = req.params.userId;
   let sql = "Select * from users where id = ?";
@@ -90,6 +102,8 @@ app.get("/edit/:userId", (req, res) => {
     });
   });
 });
+
+
 
 // Update Request
 app.post("/update", (req, res) => {
@@ -106,7 +120,9 @@ app.post("/update", (req, res) => {
   });
 });
 
-//Delete Request
+
+
+//Delete user with specific id
 app.get("/delete/:userId", (req, res) => {
   const userId = req.params.userId;
   let sql = "DELETE from users where id = ?";
@@ -116,6 +132,8 @@ app.get("/delete/:userId", (req, res) => {
     res.redirect("/");
   });
 });
+
+
 
 // Server Listening
 app.listen(3000, () => {

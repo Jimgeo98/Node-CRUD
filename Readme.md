@@ -2,10 +2,13 @@
 
 
 ### To run it :
+
+```execute the res.sql file and then```
+
 ### in terminal
 
 ```npm install```
 
 
-```nodemon```
+```npm start```
 

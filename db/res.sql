@@ -1,46 +1,46 @@
-CREATE DATABASE uowm;
+CREATE DATABASE users_db;
 
 USE uowm
 
 -- people table
 
-CREATE TABLE people (
+CREATE TABLE users (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-pname VARCHAR(30) NOT NULL,
+name VARCHAR(30) NOT NULL,
 email VARCHAR(30) NOT NULL,
-age INT NOT NULL,
+am INT NOT NULL,
 reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 --Tests
 DROP TABLE people;
 
-INSERT INTO people(pname, email, age)
+INSERT INTO users(pname, email, am)
 VALUES('giannis','gian@gmail.com',22);
 
-INSERT INTO people(pname, email, age)
+INSERT INTO users(pname, email, am)
 VALUES('john','john@gmail.com',28);
 
-INSERT INTO people(pname, email, age)
+INSERT INTO users(pname, email, am)
 VALUES('jim','jim@yahoo.com',19);
 
 
 
 -- Tests
 
-UPDATE people
-SET pname='maraki'
+UPDATE users
+SET name='maraki'
 WHERE id=1;
 
-UPDATE people
-SET pname='mitsos', email='mit@uowm.gr', age = 33
+UPDATE users
+SET name='mitsos', email='mit@uowm.gr', am = 33
 WHERE id=2;
 
-UPDATE people
+UPDATE users
 SET email='prok@uowm.com'
 WHERE id=2;
 
-DELETE FROM people WHERE id = 1;
+DELETE FROM users WHERE id = 1;
 
 -- Tests
 
@@ -58,10 +58,10 @@ actionTime DATETIME NOT NULL,
 tableName VARCHAR(30) NOT NULL,
 oldName VARCHAR(30),
 oldemail VARCHAR(30),
-oldAge INT,
+oldAm INT,
 newName VARCHAR(30),
 newEmail VARCHAR(30),
-newAge INT
+newAm INT
 );
 
 DROP TABLE loggs;
@@ -72,10 +72,10 @@ DROP TABLE loggs;
 -- trigger for insert
 delimiter |
 
-CREATE TRIGGER insertTrigger AFTER INSERT ON people FOR EACH ROW
+CREATE TRIGGER insertTrigger AFTER INSERT ON users FOR EACH ROW
   BEGIN
 	INSERT INTO loggs(username,actionKind,actionTime,tableName,newName,newEmail,newAge)
-    VALUES(current_user(),'INSERT',current_time(),'STUDENTS',new.pname,new.email,new.age);
+    VALUES(current_user(),'INSERT',current_time(),'STUDENTS',new.name,new.email,new.am);
   END;
 |
 
@@ -86,11 +86,11 @@ delimiter ;
 -- trigger for update
 delimiter |
 
-CREATE TRIGGER updateTrigger AFTER UPDATE ON people FOR EACH ROW
+CREATE TRIGGER updateTrigger AFTER UPDATE ON users FOR EACH ROW
   BEGIN
 	IF OLD.pname <> NEW.pname OR OLD.email <> NEW.email THEN
 		INSERT INTO loggs(username,actionKind,actionTime,tableName,oldName,oldemail,oldAge,newName,newEmail,newAge)
-		VALUES(current_user(),'UPDATE',current_time(),'STUDENTS',old.pname,old.email,old.age,new.pname,new.email,new.age);
+		VALUES(current_user(),'UPDATE',current_time(),'STUDENTS',old.name,old.email,old.age,new.pname,new.email,new.am);
         UNLOCK TABLES;
 	END IF;
   END
@@ -104,10 +104,10 @@ delimiter ;
 
 delimiter |
 
-CREATE TRIGGER deleteTrigger AFTER DELETE ON people FOR EACH ROW
+CREATE TRIGGER deleteTrigger AFTER DELETE ON users FOR EACH ROW
   BEGIN
 	INSERT INTO loggs(username,actionKind,actionTime,tableName,oldName)
-	VALUES(current_user(),'DELETE',current_time(),'STUDENTS',old.pname);
+	VALUES(current_user(),'DELETE',current_time(),'STUDENTS',old.name);
     UNLOCK TABLES;
   END
 |
@@ -119,7 +119,7 @@ delimiter ;
 
 SET SQL_SAFE_UPDATES = 0;
 DELETE FROM loggs ;
-DELETE FROM people;
+DELETE FROM users;
 
 
 DROP TRIGGER insertTrigger;

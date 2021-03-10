@@ -1,4 +1,4 @@
-## Its a CRUD web application using Node.js / ejs and HTML/CSS
+## Its a CRUD web application using Node.js / Express.js / ejs / MySQL and HTML/CSS
 
 
 ### To run it :

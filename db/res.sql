@@ -1,4 +1,6 @@
-USE uowmerg;
+CREATE DATABASE uowm;
+
+USE uowm
 
 -- people table
 
@@ -10,7 +12,7 @@ age INT NOT NULL,
 reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-
+--Tests
 DROP TABLE people;
 
 INSERT INTO people(pname, email, age)
@@ -21,6 +23,10 @@ VALUES('john','john@gmail.com',28);
 
 INSERT INTO people(pname, email, age)
 VALUES('jim','jim@yahoo.com',19);
+
+
+
+-- Tests
 
 UPDATE people
 SET pname='maraki'
@@ -35,6 +41,10 @@ SET email='prok@uowm.com'
 WHERE id=2;
 
 DELETE FROM people WHERE id = 1;
+
+-- Tests
+
+
 
 
 
@@ -105,6 +115,7 @@ CREATE TRIGGER deleteTrigger AFTER DELETE ON people FOR EACH ROW
 delimiter ;
 
 
+--Tests
 
 SET SQL_SAFE_UPDATES = 0;
 DELETE FROM loggs ;
@@ -114,7 +125,7 @@ DELETE FROM people;
 DROP TRIGGER insertTrigger;
 DROP TRIGGER updateTrigger;
 
-
+--Tests
 
 
 

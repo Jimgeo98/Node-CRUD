@@ -1,6 +1,6 @@
 CREATE DATABASE users_db;
 
-USE uowm
+USE users_db
 
 -- people table
 

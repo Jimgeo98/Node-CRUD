@@ -1,19 +1,19 @@
+
 const path = require("path");
 const routes = require("./routes/routes");
 const express = require("express");
 const favicon = require("express-favicon");
 
-const app = express();
 const port = process.env.SERVER_PORT;
+const app = express();
 
-//middleware
 //set views file
 app.set("views", path.join(__dirname, "views"));
 
 //set view engine
 app.set("view engine", "ejs");
 
-//Parse URL-encoded bodies
+//middleware
 app.use(favicon(__dirname + "/public/favicon.ico"));
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));

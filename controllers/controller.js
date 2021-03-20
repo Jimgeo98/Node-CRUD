@@ -1,5 +1,5 @@
-const db = require("../model/db");
 
+const db = require("../model/db");
 
 
 // Display all Data

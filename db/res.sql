@@ -7,7 +7,7 @@ USE users_db;
 
 CREATE TABLE users (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(30) NOT NULL,
+pname VARCHAR(30) NOT NULL,
 email VARCHAR(30) NOT NULL,
 am INT NOT NULL,
 reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -30,11 +30,11 @@ VALUES('jim','jim@yahoo.com',19);
 -- Tests
 
 UPDATE users
-SET name='maraki'
+SET pname='maraki'
 WHERE id=1;
 
 UPDATE users
-SET name='mitsos', email='mit@uowm.gr', am = 33
+SET pname='mitsos', email='mit@uowm.gr', am = 33
 WHERE id=2;
 
 UPDATE users
@@ -76,7 +76,7 @@ delimiter |
 CREATE TRIGGER insertTrigger AFTER INSERT ON users FOR EACH ROW
   BEGIN
 	INSERT INTO loggs(username,actionKind,actionTime,tableName,newName,newEmail,newAge)
-    VALUES(current_user(),'INSERT',current_time(),'STUDENTS',new.name,new.email,new.am);
+    VALUES(current_user(),'INSERT',current_time(),'STUDENTS',new.pname,new.email,new.am);
   END;
 |
 
@@ -91,7 +91,7 @@ CREATE TRIGGER updateTrigger AFTER UPDATE ON users FOR EACH ROW
   BEGIN
 	IF OLD.pname <> NEW.pname OR OLD.email <> NEW.email THEN
 		INSERT INTO loggs(username,actionKind,actionTime,tableName,oldName,oldemail,oldAge,newName,newEmail,newAge)
-		VALUES(current_user(),'UPDATE',current_time(),'STUDENTS',old.name,old.email,old.age,new.pname,new.email,new.am);
+		VALUES(current_user(),'UPDATE',current_time(),'STUDENTS',old.pname,old.email,old.age,new.pname,new.email,new.am);
         UNLOCK TABLES;
 	END IF;
   END
@@ -108,7 +108,7 @@ delimiter |
 CREATE TRIGGER deleteTrigger AFTER DELETE ON users FOR EACH ROW
   BEGIN
 	INSERT INTO loggs(username,actionKind,actionTime,tableName,oldName)
-	VALUES(current_user(),'DELETE',current_time(),'STUDENTS',old.name);
+	VALUES(current_user(),'DELETE',current_time(),'STUDENTS',old.pname);
     UNLOCK TABLES;
   END
 |

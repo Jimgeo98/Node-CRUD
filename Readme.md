@@ -9,11 +9,11 @@
 
 ## To run it :
 
-```execute the res.sql file from db folder```
+```1-> execute the res.sql file from db folder```
 
-## in terminal
+## in terminal :
 
-```1-> npm install```
+```2-> npm install```
 
 
-```2-> npm start```
+```3-> npm start```

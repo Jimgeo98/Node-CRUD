@@ -87,6 +87,7 @@ const deleteData = (req, res) => {
 
 
 
+// export the necessary modules
 module.exports = {
   getAllData,
   saveData,
@@ -95,3 +96,4 @@ module.exports = {
   updateData,
   deleteData,
 };
+

@@ -4,7 +4,7 @@
   "description": "node crud app",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon server.js"
   },
   "author": "JimGeo",
   "license": "ISC",
@@ -15,5 +15,8 @@
     "express": "^4.17.1",
     "express-favicon": "^2.0.1",
     "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }

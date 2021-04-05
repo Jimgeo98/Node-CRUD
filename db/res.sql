@@ -1,7 +1,7 @@
 
-CREATE DATABASE users_db;
+CREATE DATABASE people;
 
-USE users_db;
+USE people;
 
 -- people table
 
@@ -14,23 +14,23 @@ reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 --Tests
-DROP TABLE people;
+DROP TABLE users;
 
 INSERT INTO users(pname, email, am)
-VALUES('giannis','gian@gmail.com',22);
+VALUES('Lisa','lis@gmail.com',22);
 
 INSERT INTO users(pname, email, am)
-VALUES('john','john@gmail.com',28);
+VALUES('John','john@gmail.com',28);
 
 INSERT INTO users(pname, email, am)
-VALUES('jim','jim@yahoo.com',19);
+VALUES('Alex','ale@yahoo.com',19);
 
 
 
 -- Tests
 
 UPDATE users
-SET pname='maraki'
+SET pname='maria'
 WHERE id=1;
 
 UPDATE users
@@ -119,7 +119,7 @@ delimiter ;
 --Tests
 
 SET SQL_SAFE_UPDATES = 0;
-DELETE FROM loggs ;
+DELETE FROM loggs;
 DELETE FROM users;
 
 
@@ -127,11 +127,3 @@ DROP TRIGGER insertTrigger;
 DROP TRIGGER updateTrigger;
 
 --Tests
-
-
-
-
-
-
-
-

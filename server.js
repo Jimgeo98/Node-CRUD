@@ -23,9 +23,7 @@ app.use(routes);
 
 // Server Listening
 app.listen(port, (err) => {
-  if(err){
-    console.log(err)
-  }
+  if(err) console.log(err)
   console.log(`server started at port ${port}`);
   console.log("click here " + `http://localhost:${port}`);
 });

@@ -1,14 +1,19 @@
-## Its a CRUD web application using Node.js / Express.js / ejs / MySQL and HTML/CSS
-
+## Its a CRUD web application using:
+### Node.js
+### Express.js 
+### ejs
+### MySQL
+### HTML/CSS
+### Bootstrap
+###
 
 ### To run it :
 
-```execute the res.sql file and then```
+```execute the res.sql file from db folder```
 
 ### in terminal
 
-```npm install```
+```1-> npm install```
 
 
-```npm start```
-
+```2-> npm start```

@@ -14,7 +14,7 @@ reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 --Tests
-DROP TABLE users;
+-- DROP TABLE users;
 
 INSERT INTO users(pname, email, am)
 VALUES('Lisa','lis@gmail.com',22);
@@ -29,19 +29,19 @@ VALUES('Alex','ale@yahoo.com',19);
 
 -- Tests
 
-UPDATE users
-SET pname='maria'
-WHERE id=1;
+-- UPDATE users
+-- SET pname='maria'
+-- WHERE id=1;
 
-UPDATE users
-SET pname='mitsos', email='mit@uowm.gr', am = 33
-WHERE id=2;
+-- UPDATE users
+-- SET pname='mitsos', email='mit@uowm.gr', am = 33
+-- WHERE id=2;
 
-UPDATE users
-SET email='prok@uowm.com'
-WHERE id=2;
+-- UPDATE users
+-- SET email='prok@uowm.com'
+-- WHERE id=2;
 
-DELETE FROM users WHERE id = 1;
+-- DELETE FROM users WHERE id = 1;
 
 -- Tests
 
@@ -65,7 +65,7 @@ newEmail VARCHAR(30),
 newAm INT
 );
 
-DROP TABLE loggs;
+-- DROP TABLE loggs;
 
 
 
@@ -118,12 +118,12 @@ delimiter ;
 
 --Tests
 
-SET SQL_SAFE_UPDATES = 0;
-DELETE FROM loggs;
-DELETE FROM users;
+-- SET SQL_SAFE_UPDATES = 0;
+-- DELETE FROM loggs;
+-- DELETE FROM users;
 
 
-DROP TRIGGER insertTrigger;
-DROP TRIGGER updateTrigger;
+-- DROP TRIGGER insertTrigger;
+-- DROP TRIGGER updateTrigger;
 
 --Tests

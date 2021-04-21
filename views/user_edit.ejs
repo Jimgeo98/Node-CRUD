@@ -6,7 +6,7 @@
   <body>
     <div class="container">
       <h2><%= title %></h2>
-      <a href="/" class="btn btn-warning">back</a>
+      <a href="/" class="btn btn-warning"><i class="fas fa-backward"></i> back</a>
       <form action="/update" method="post">
         <input type="hidden" value="<%= user.id %>" name="id">
         <div class="form-group">
@@ -21,7 +21,7 @@
           <label for="am">AM:</label>
           <input type="number" class="form-control" id="pwd" placeholder="Enter AM" value="<%= user.am %>" name="am" required/>
         </div>
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success"> <i class="far fa-check-square"></i> Submit</button>
       </form>
     </div>
     <%- include('./templates/footer.ejs') %>

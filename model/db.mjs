@@ -1,9 +1,11 @@
 
-const mysql = require("mysql")
-require("dotenv").config()
+import mysql from "mysql"
+import * as dotenv from "dotenv";
+dotenv.config();
+
 
 // Database config
-const db = mysql.createPool({
+export const db = mysql.createPool({
   connectionLimit: 100,
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -31,5 +33,3 @@ db.getConnection((err, connection) => {
   }
 })
 
-
-module.exports = db;

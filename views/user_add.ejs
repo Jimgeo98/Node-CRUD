@@ -8,7 +8,7 @@
     <h2>
       <%= title %>
     </h2>
-    <a href="/" class="btn btn-warning">back</a>
+    <a href="/" class="btn btn-warning"><i class="fas fa-backward"></i> back</a>
     <form action="/save" method="post">
       <div class="form-group">
         <label for="name">Name:</label>
@@ -22,7 +22,7 @@
         <label for="am">AM:</label>
         <input type="number" class="form-control" id="am" placeholder="Enter AM" name="am" required />
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary"> <i class="far fa-check-square"></i> Submit</button>
     </form>
   </div>
   <%- include('./templates/footer.ejs') %>

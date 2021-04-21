@@ -1,9 +1,9 @@
 
-const db = require("../model/db");
+import {db} from "../model/db.mjs";
 
 
 // Display all Data
-const getAllData = (req, res) => {
+export const getAllData = (req, res) => {
   let sql = "SELECT * FROM users ORDER by name ASC";
   db.query(sql, (err, rows) => {
     if (err) throw err;
@@ -17,7 +17,7 @@ const getAllData = (req, res) => {
 
 
 //Add Request
-const addData = (req, res) => {
+export const addData = (req, res) => {
   res.render("user_add", {
     title: "Add New User",
   });
@@ -26,7 +26,7 @@ const addData = (req, res) => {
 
 
 //Save the added item
-const saveData = (req, res) => {
+export const saveData = (req, res) => {
   let data = {
     name: req.body.name,
     email: req.body.email,
@@ -43,7 +43,7 @@ const saveData = (req, res) => {
 
 
 //Get specific user with unique id
-const getSpecificUser = (req, res) => {
+export const getSpecificUser = (req, res) => {
   const userId = req.params.userId;
   let sql = "Select * from users where id = ?";
   db.query(sql, [userId], (err, result) => {
@@ -58,7 +58,7 @@ const getSpecificUser = (req, res) => {
 
 
 // Update Request
-const updateData = (req, res) => {
+export const updateData = (req, res) => {
   const userId = req.body.id;
   const name = req.body.name;
   const email = req.body.email;
@@ -75,7 +75,7 @@ const updateData = (req, res) => {
 
 
 //Delete user with specific id
-const deleteData = (req, res) => {
+export const deleteData = (req, res) => {
   const userId = req.params.userId;
   let sql = "DELETE from users where id = ?";
   db.query(sql, userId, (err, result) => {
@@ -83,17 +83,5 @@ const deleteData = (req, res) => {
     console.log(result);
     res.redirect("/");
   });
-};
-
-
-
-// export the necessary modules
-module.exports = {
-  getAllData,
-  saveData,
-  addData,
-  getSpecificUser,
-  updateData,
-  deleteData,
 };
 

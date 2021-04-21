@@ -1,6 +1,6 @@
 {
   "name": "nodecrud",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "node crud app",
   "main": "server.js",
   "scripts": {

@@ -5,9 +5,9 @@
   </head>
   <body>
     <div class="container">
-      <h2><%= title %></h2>
-      <a href="/" class="btn btn-warning"><i class="fas fa-backward"></i> back</a>
-      <form action="/update" method="post">
+      <h2 class="animate__animated animate__flipInX"><%= title %></h2>
+      <a href="/" class="btn btn-warning animate__animated animate__backInDown"><i class="fas fa-backward"></i> back</a>
+      <form action="/update" method="post" class="animate__animated animate__fadeInDown">
         <input type="hidden" value="<%= user.id %>" name="id">
         <div class="form-group">
           <label for="name">Name:</label>

@@ -17,6 +17,11 @@ body {
   flex-direction: column;
 }
 
+a:active,
+.btn-primary:active{
+  transform: scale(0.9);
+}
+
 .container h2 {
   color: #fff;
   font-weight: bold;
@@ -62,9 +67,13 @@ body {
   margin: 10px;
 }
 
-.container #edit {
-  margin-left: 40px;
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 footer {
   background-color: rgb(47, 46, 46);
